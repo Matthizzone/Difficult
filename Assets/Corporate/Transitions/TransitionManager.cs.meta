@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d1f89234375bdd24f857c8d4c8424976
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - FadeFab: {fileID: 3754208088126833116, guid: 31c18fc4ebca18e40a6481e71538d335, type: 3}
+  - SlidingFab: {fileID: 4348918223450940717, guid: 259a53e30e49d51419a16ff27aaa1785, type: 3}
+  - CutoutFab: {fileID: 6695445479769223094, guid: b6f82e238917e2d4face8cb19c5a9c82, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
