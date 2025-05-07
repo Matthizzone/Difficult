@@ -29,8 +29,7 @@ public class Pulsar : MonoBehaviour
         string bpm_str = "" +
             (bpm > 100 ? MattMath.GetDigit(bpm, 2) : "") +
             MattMath.GetDigit(bpm, 1) +
-            MattMath.GetDigit(bpm, 0) + "." +
-            MattMath.GetDigit(bpm, -1);
+            MattMath.GetDigit(bpm, 0);
 
         transform.GetChild(1).GetComponent<TMPro.TMP_Text>().text = " = " + bpm_str;
     }
@@ -52,12 +51,26 @@ public class Pulsar : MonoBehaviour
 
         Pulse();
 
+        bpm = 60 / (Time.time - prev_pulse);
+
         if (prev_pulse > 0)
         {
-            bpm = 60 / (Time.time - prev_pulse);
-            prev_pulse = Time.time;
-
+            CheckCalc();
             UpdateBPMText();
+        }
+        prev_pulse = Time.time;
+    }
+
+    void CheckCalc()
+    {
+        float target_bpm = transform.parent.Find("EnemyMet").GetComponent<Pulsar>().bpm;
+        if (Mathf.Abs(bpm - target_bpm) < 5)
+        {
+            transform.parent.Find("Checks").GetComponent<Checks>().AddCheck();
+        }
+        else
+        {
+            transform.parent.Find("Checks").GetComponent<Checks>().AddX();
         }
     }
 
