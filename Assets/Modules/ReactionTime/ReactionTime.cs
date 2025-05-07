@@ -18,7 +18,7 @@ public class ReactionTime : MonoBehaviour
         if (started && Time.time > flash_time)
         {
             text.text = "Click!";
-            Banner.color = new Color(0.89f, 0.77f, 0.33f); // yellow
+            Banner.color = ColorPalette.instance.yellow;
         }
     }
 
@@ -35,7 +35,7 @@ public class ReactionTime : MonoBehaviour
                 AudioManager.instance.PlaySound("Blip", true);
 
                 text.text = "Waiting . . .";
-                Banner.color = new Color(0.3f, 0.44f, 0.8f); // blue
+                Banner.color = ColorPalette.instance.blue;
 
             }
             else
@@ -53,20 +53,20 @@ public class ReactionTime : MonoBehaviour
                 if (Time.time < flash_time)
                 {
                     text.text = "Too fast!";
-                    Banner.color = new Color(0.84f, 0.29f, 0.27f); // red
+                    Banner.color = ColorPalette.instance.red;
                     
                 }
                 else if (click_time > 0.2f)
                 {
 
                     text.text = "Too slow!\r\n" + click_time_str;
-                    Banner.color = new Color(0.84f, 0.29f, 0.27f); // red
+                    Banner.color = ColorPalette.instance.red;
                 }
                 else
                 {
 
                     text.text = "You got it!\r\n" + click_time_str;
-                    Banner.color = new Color(0.42f, 0.77f, 0.37f); // green
+                    Banner.color = ColorPalette.instance.green;
                 }
             }
         }

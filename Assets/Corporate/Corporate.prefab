@@ -44,9 +44,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c26e0b6c7b5c5a40ab9cded0adae22e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: matthizzone
-  level: double_donuts
-  new_score: 50
+--- !u!1 &1225587743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1225587744}
+  - component: {fileID: 1225587745}
+  m_Layer: 0
+  m_Name: ColorPalette
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1225587744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225587743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3233342027605946928}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1225587745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225587743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5343bda18f8514b89f85c92be39f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - name: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  - name: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  - name: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  - name: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  - name: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  - name: 
+    color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1919543159790678715
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +392,7 @@ Transform:
   - {fileID: 2258736433259573205}
   - {fileID: 8118872887428714285}
   - {fileID: 57757725}
+  - {fileID: 1225587744}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
