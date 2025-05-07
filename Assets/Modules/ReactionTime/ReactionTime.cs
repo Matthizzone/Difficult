@@ -32,6 +32,8 @@ public class ReactionTime : MonoBehaviour
                 started = true;
                 flash_time = Time.time + Random.Range(3f, 7f);
 
+                AudioManager.instance.PlaySound("Blip", true);
+
                 text.text = "Waiting . . .";
                 Banner.color = new Color(0.3f, 0.44f, 0.8f); // blue
 
@@ -39,6 +41,8 @@ public class ReactionTime : MonoBehaviour
             else
             {
                 started = false;
+
+                AudioManager.instance.PlaySound("Blip", true);
 
                 float click_time = Time.time - flash_time;
                 string click_time_str = "" +
