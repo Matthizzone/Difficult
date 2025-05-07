@@ -1,11 +1,10 @@
 public static class GameState
 {
-    public static int level = 0;
-    public static bool speedrun_mode = false;
-    public static string name = "DEFAULT";
-    public static int deaths;
+    public static int[] successes = new int[20];
+    public static int[] attempts = new int[20];
 
-    public static bool logo_done = false;
+    public static bool game_over = false;
+
 
 
     // settings
@@ -43,6 +42,13 @@ public static class GameState
     public static int currentFile;
     public static bool levelOver;
 
+
     // Don't delete (breaks transitions)
+
     public static bool currently_transitioning = false;
+
+
+    // Don't delete 
+
+    public static bool logo_done = false;
 }

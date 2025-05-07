@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.802467, g: 0.802467, b: 0.802467, a: 1}
+  m_IndirectSpecularColor: {r: 0.8896498, g: 0.8896498, b: 0.8896498, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -948,6 +948,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 185102528}
+  - component: {fileID: 185102529}
   m_Layer: 0
   m_Name: Modules
   m_TagString: Untagged
@@ -973,6 +974,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &185102529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185102527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb64c695a6139c9478ed24682eddc7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &254027841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2080,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &635167021
 Transform:
   m_ObjectHideFlags: 0
@@ -3839,7 +3852,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -4940,6 +4953,10 @@ PrefabInstance:
       propertyPath: colors2.Array.data[0].color.r
       value: 0.84
       objectReference: {fileID: 0}
+    - target: {fileID: 3233342027100062346, guid: ef656755a52928d4b9f521d254554593, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 285cfaccfd735df4a9dcbcc543ca1855, type: 2}
     - target: {fileID: 3233342027605946928, guid: ef656755a52928d4b9f521d254554593, type: 3}
       propertyPath: m_RootOrder
       value: 0

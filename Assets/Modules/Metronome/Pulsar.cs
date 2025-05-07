@@ -48,6 +48,7 @@ public class Pulsar : MonoBehaviour
     {
         if (auto) return;
         if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space)) return;
+        if (GameState.game_over) return;
 
         Pulse();
 

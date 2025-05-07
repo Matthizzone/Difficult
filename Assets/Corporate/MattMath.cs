@@ -69,10 +69,17 @@ public static class MattMath
         // which = 10^(which)
         // 543210.[-1][-2] etc.
 
+        // remember the max values of float:
+        // 100000000000000000000000000000000000000f (1e+38f) and
+        // 0.000000000000000000000000000000000000000000001f (1e-45f)
+
         // Convert to decimal for better precision
         decimal dec = (decimal)a;
 
         // Shift the digit of interest to the units place
+        decimal denom = (decimal)Math.Pow(10, which);
+        if (denom == 0) return 0;
+
         decimal shifted = dec / (decimal)Math.Pow(10, which);
 
         // Take absolute value to handle negative numbers
@@ -85,6 +92,7 @@ public static class MattMath
         return (int)(shifted % 10);
         //return ((int)(a / Mathf.Pow(10, which)) % 10);
     }
+
 
     public static Quaternion QuaternionSmoothDamp(Quaternion rot, Quaternion target, ref Quaternion velocity, float time)
     {

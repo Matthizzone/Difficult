@@ -57,6 +57,11 @@ public class Checks : MonoBehaviour
         transform.GetChild(check_i).GetChild(0).GetComponent<Image>().color = ColorPalette.instance.green;
 
         check_i++;
+
+        if (check_i >= num_checks)
+        {
+            ModuleManager.instance.ModuleVictory();
+        }
     }
 
     public void AddX()
@@ -68,5 +73,7 @@ public class Checks : MonoBehaviour
         transform.GetChild(check_i).GetChild(0).GetComponent<Image>().color = ColorPalette.instance.red;
 
         check_i++;
+
+        ModuleManager.instance.GameOver();
     }
 }

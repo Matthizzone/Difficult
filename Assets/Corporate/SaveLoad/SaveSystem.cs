@@ -10,7 +10,7 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/saveData" + GameState.currentFile + ".matt";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        LevelDataObject data = new LevelDataObject(GameState.levelOver, GameState.name, GameState.master_vol, GameState.music_vol, GameState.sfx_vol, GameState.music_vol);
+        LevelDataObject data = new LevelDataObject(GameState.successes, GameState.attempts, GameState.master_vol, GameState.music_vol, GameState.sfx_vol, GameState.music_vol);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -26,8 +26,8 @@ public static class SaveSystem
             LevelDataObject data = formatter.Deserialize(stream) as LevelDataObject;
             stream.Close();
 
-            GameState.levelOver = data.levelOver;
-            GameState.name = data.name;
+            GameState.successes = data.successes;
+            GameState.attempts = data.attempts;
 
             GameState.master_vol = data.master_vol;
             GameState.music_vol = data.music_vol;
@@ -37,8 +37,8 @@ public static class SaveSystem
         else
         {
             // default values
-            GameState.levelOver = false;
-            GameState.name = "DEFAULT";
+            GameState.successes = new int[20];
+            GameState.attempts = new int[20];
 
             GameState.master_vol = 100;
             GameState.music_vol = 100;
