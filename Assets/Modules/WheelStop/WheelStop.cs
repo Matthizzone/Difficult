@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class InputTest : MonoBehaviour
+public class WheelStop : MonoBehaviour
 {
     int sphere_i = 0;
     public int scale = 5;
