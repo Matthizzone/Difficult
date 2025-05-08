@@ -33,10 +33,7 @@ public class ModuleManager : MonoBehaviour
 
         MattMath.FisherYatesShuffle(order);
 
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            // order[i] = 1; ORDER CONTROL
-        }
+        order[0] = 6; // ORDER CONTROL
 
         GoToModule(order[num_completed]);
     }
@@ -72,6 +69,8 @@ public class ModuleManager : MonoBehaviour
 
         SaveSystem.SaveData();
 
+        GameState.game_over = true;
+
 
         num_completed++;
         StartCoroutine(WaitThenAdvance());
@@ -82,6 +81,7 @@ public class ModuleManager : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         GoToModule(order[num_completed]);
+        GameState.game_over = false;
     }
 
     public void GameOver()
