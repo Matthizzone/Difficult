@@ -27,28 +27,31 @@ public class Checks : MonoBehaviour
 
     void GenerateChecks()
     {
+        Vector3 spacing_vec;
+
         if (Mathf.Abs(center_point.x) < 0.1f)
         {
             // generate horizontally
-
-            for (int i = 0; i < num_checks; i++)
-            {
-                Vector3 spacing_vec = Vector3.right * check_spacing;
-                Vector3 start_point = center_point - spacing_vec * ((num_checks - 1) / 2f);
-
-                RectTransform new_check = Instantiate(CheckFab).GetComponent<RectTransform>();
-                new_check.SetParent(transform);
-                new_check.anchoredPosition = start_point + spacing_vec * i;
-                new_check.localScale = Vector3.one * check_scale;
-            }
+            spacing_vec = Vector3.right * check_spacing;
         }
         else
         {
             // generate vertically
+            spacing_vec = Vector3.down * check_spacing;
+        }
+
+        for (int i = 0; i < num_checks; i++)
+        {
+            Vector3 start_point = center_point - spacing_vec * ((num_checks - 1) / 2f);
+
+            RectTransform new_check = Instantiate(CheckFab).GetComponent<RectTransform>();
+            new_check.SetParent(transform);
+            new_check.anchoredPosition = start_point + spacing_vec * i;
+            new_check.localScale = Vector3.one * check_scale;
         }
     }
 
-    public void AddCheck()
+    public void AddCheck(bool sound_on)
     {
         if (check_i >= num_checks) return;
 
@@ -62,6 +65,10 @@ public class Checks : MonoBehaviour
         {
             ModuleManager.instance.ModuleVictory();
         }
+        else
+        {
+            if (sound_on) AudioManager.instance.PlaySound("Success", true);
+        }
     }
 
     public void AddX()
@@ -73,6 +80,7 @@ public class Checks : MonoBehaviour
         transform.GetChild(check_i).GetChild(0).GetComponent<Image>().color = ColorPalette.instance.red;
 
         check_i++;
+        AudioManager.instance.PlaySound("GameOver", true);
 
         ModuleManager.instance.GameOver();
     }

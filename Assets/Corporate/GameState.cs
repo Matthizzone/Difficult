@@ -5,6 +5,8 @@ public static class GameState
 
     public static bool game_over = false;
 
+    public static bool loaded = false;
+
 
 
     // settings

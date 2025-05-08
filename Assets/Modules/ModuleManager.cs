@@ -18,6 +18,12 @@ public class ModuleManager : MonoBehaviour
 
     void Start()
     {
+        if (!GameState.loaded)
+        {
+            SaveSystem.LoadData();
+            GameState.loaded = true;
+        }
+
         order = new int[transform.childCount];
 
         for (int i = 0; i < transform.childCount; i++)
@@ -29,13 +35,10 @@ public class ModuleManager : MonoBehaviour
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            order[i] = 2;
-
-            print(order[i]);
+            // order[i] = 1; ORDER CONTROL
         }
 
-        //GoToModule(order[num_completed]);
-        GoToModule(2);
+        GoToModule(order[num_completed]);
     }
 
     private void Update()
@@ -43,7 +46,7 @@ public class ModuleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             GameState.game_over = true;
-            LoaderBehavior.instance.FadeToScene(0, 1f, 1f, 1f);
+            LoaderBehavior.instance.FadeToScene(0, 0.3f, 0.3f, 0.3f);
         }
     }
 
@@ -55,6 +58,8 @@ public class ModuleManager : MonoBehaviour
 
             screen.SetActive(i == module_num);
         }
+
+        GameObject.Find("LevelNum").GetComponent<TMPro.TMP_Text>().text = "" + (num_completed + 1) + ".";
     }
 
     public void ModuleVictory()
@@ -71,6 +76,7 @@ public class ModuleManager : MonoBehaviour
         num_completed++;
         StartCoroutine(WaitThenAdvance());
     }
+
     IEnumerator WaitThenAdvance()
     {
         yield return new WaitForSeconds(3);
@@ -80,7 +86,6 @@ public class ModuleManager : MonoBehaviour
 
     public void GameOver()
     {
-        AudioManager.instance.PlaySound("GameOver", true);
         GameState.game_over = true;
 
 
@@ -96,6 +101,6 @@ public class ModuleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
 
-        LoaderBehavior.instance.FadeToScene(0, 1f, 1f, 1f);
+        LoaderBehavior.instance.FadeToScene(0, 0.3f, 0.3f, 0.3f);
     }
 }

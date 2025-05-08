@@ -24,50 +24,55 @@ public class ReactionTime : MonoBehaviour
 
     void HandleClick()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space)) return;
+        if (GameState.game_over) return;
+
+        if (!started)
         {
-            if (!started)
+            // begin trial
+            started = true;
+            flash_time = Time.time + Random.Range(3f, 7f);
+
+            AudioManager.instance.PlaySound("Blip", true);
+
+            text.text = "Waiting . . .";
+            Banner.color = ColorPalette.instance.blue;
+
+        }
+        else
+        {
+            started = false;
+
+            AudioManager.instance.PlaySound("Blip", true);
+
+            float click_time = Time.time - flash_time;
+            string click_time_str = "" +
+                MattMath.GetDigit(click_time, -1) +
+                MattMath.GetDigit(click_time, -2) +
+                MattMath.GetDigit(click_time, -3) + " ms";
+
+            if (Time.time < flash_time)
             {
-                // begin trial
-                started = true;
-                flash_time = Time.time + Random.Range(3f, 7f);
+                text.text = "Too fast!";
+                Banner.color = ColorPalette.instance.red;
 
-                AudioManager.instance.PlaySound("Blip", true);
+                transform.Find("Canvas").Find("Checks").GetComponent<Checks>().AddX();
+            }
+            else if (click_time > 0.25f)
+            {
 
-                text.text = "Waiting . . .";
-                Banner.color = ColorPalette.instance.blue;
+                text.text = "Too slow!\r\n" + click_time_str;
+                Banner.color = ColorPalette.instance.red;
 
+                transform.Find("Canvas").Find("Checks").GetComponent<Checks>().AddX();
             }
             else
             {
-                started = false;
 
-                AudioManager.instance.PlaySound("Blip", true);
+                text.text = "You got it!\r\n" + click_time_str;
+                Banner.color = ColorPalette.instance.green;
 
-                float click_time = Time.time - flash_time;
-                string click_time_str = "" +
-                    MattMath.GetDigit(click_time, -1) +
-                    MattMath.GetDigit(click_time, -2) +
-                    MattMath.GetDigit(click_time, -3) + " ms";
-
-                if (Time.time < flash_time)
-                {
-                    text.text = "Too fast!";
-                    Banner.color = ColorPalette.instance.red;
-                    
-                }
-                else if (click_time > 0.2f)
-                {
-
-                    text.text = "Too slow!\r\n" + click_time_str;
-                    Banner.color = ColorPalette.instance.red;
-                }
-                else
-                {
-
-                    text.text = "You got it!\r\n" + click_time_str;
-                    Banner.color = ColorPalette.instance.green;
-                }
+                transform.Find("Canvas").Find("Checks").GetComponent<Checks>().AddCheck(true);
             }
         }
     }

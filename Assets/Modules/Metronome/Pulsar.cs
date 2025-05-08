@@ -67,7 +67,7 @@ public class Pulsar : MonoBehaviour
         float target_bpm = transform.parent.Find("EnemyMet").GetComponent<Pulsar>().bpm;
         if (Mathf.Abs(bpm - target_bpm) < 5)
         {
-            transform.parent.Find("Checks").GetComponent<Checks>().AddCheck();
+            transform.parent.Find("Checks").GetComponent<Checks>().AddCheck(false);
         }
         else
         {

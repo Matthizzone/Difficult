@@ -11,6 +11,7 @@ public class MenuBehavior : MonoBehaviour
     private void Start()
     {
         SaveSystem.LoadData();
+        GameState.loaded = true;
 
         GoToMenu(Menus.MainMenu);
     }
@@ -25,7 +26,7 @@ public class MenuBehavior : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameState.game_over = false;
-            LoaderBehavior.instance.FadeToScene(1, 2f, 1f, 1f);
+            LoaderBehavior.instance.FadeToScene(1, 0.3f, 0.3f, 0.3f);
         }
 
         if (Input.GetKeyDown(KeyCode.I))
@@ -66,7 +67,7 @@ public class MenuBehavior : MonoBehaviour
 
         for (int i = 0; i < GameState.attempts.Length; i++)
         {
-            success_rates[i] = 0.05f;
+            success_rates[i] = 0f;
             if (GameState.attempts[i] > 0) success_rates[i] = (float)GameState.successes[i] / GameState.attempts[i];
             success_rates[i] *= 100f;
 

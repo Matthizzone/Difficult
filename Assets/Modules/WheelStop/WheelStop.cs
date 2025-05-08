@@ -10,38 +10,31 @@ public class WheelStop : MonoBehaviour
 
     bool running = false;
 
-    int successes = 0;
-    int attempts = 0;
-
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            running = !running;
-
-            if (!running)
-            {
-                // just stopped the wheel
-
-                attempts++;
-                if (sphere_i / scale == 0) successes++;
-
-                UpdateRate();
-            }
-
-        }
+        PlayerInput();
     }
 
-    void UpdateRate()
+    void PlayerInput()
     {
-        float success_rate = attempts == 0 ? 0 : (float)(successes) / attempts * 100f;
-        string rate_txt = "" + MattMath.GetDigit(success_rate, 1)
-                             + MattMath.GetDigit(success_rate, 0) + "."
-                             + MattMath.GetDigit(success_rate, -1)
-                             + MattMath.GetDigit(success_rate, -2) + "%";
+        if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space)) return;
+        if (GameState.game_over) return;
+        
+        running = !running;
 
-        GameObject.Find("SuccessRate").GetComponent<TMPro.TMP_Text>().text =
-            "" + successes + " / " + attempts + " = " + rate_txt;
+        if (!running)
+        {
+            // just stopped the wheel
+
+            if (sphere_i / scale == 0)
+            {
+                transform.Find("Canvas").Find("Checks").GetComponent<Checks>().AddCheck(true);
+            }
+            else
+            {
+                transform.Find("Canvas").Find("Checks").GetComponent<Checks>().AddX();
+            }
+        }
     }
 
     private void FixedUpdate()
