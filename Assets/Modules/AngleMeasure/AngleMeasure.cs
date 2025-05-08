@@ -23,9 +23,12 @@ public class AngleMeasure : MonoBehaviour
         transform.Find("Side1").localEulerAngles = new Vector3(0, angle1, 0);
         transform.Find("Side2").localEulerAngles = new Vector3(0, angle2, 0);
 
-        Vector3 tip1_pos = transform.Find("Side1").Find("Tip").position;
-        Vector3 tip2_pos = transform.Find("Side2").Find("Tip").position;
-        Vector3 new_center = (tip1_pos + tip2_pos) / 3;
+        transform.Find("Side1").position = Vector3.zero;
+        transform.Find("Side2").position = Vector3.zero;
+
+        Vector3 tip1_pos = transform.Find("Side1").Find("Line").Find("Tip").position;
+        Vector3 tip2_pos = transform.Find("Side2").Find("Line").Find("Tip").position;
+        Vector3 new_center = -(tip1_pos + tip2_pos) / 3;
 
         transform.Find("Side1").position = new_center;
         transform.Find("Side2").position = new_center;
@@ -41,11 +44,11 @@ public class AngleMeasure : MonoBehaviour
 
         answer_box.text = "" + (int)solution_angle;
 
-        if (Mathf.Abs(user_angle - solution_angle) < 5)
+        if (Mathf.Abs(user_angle - solution_angle) < 4)
         {
             transform.Find("Canvas").Find("Checks").GetComponent<Checks>().AddCheck(true);
 
-            StartCoroutine(WaitThenNextRoutine());
+            if (!GameState.game_over) StartCoroutine(WaitThenNextRoutine());
         }
         else
         {
