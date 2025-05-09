@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimerBehavior : MonoBehaviour
 {
-    public KeyboardSpam module;
+    public Spam module;
 
     public float time_left = 10f;
 

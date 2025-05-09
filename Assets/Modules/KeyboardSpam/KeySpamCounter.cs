@@ -5,7 +5,7 @@ using UnityEngine;
 public class KeySpamCounter : MonoBehaviour
 {
     public TMPro.TMP_Text text;
-    public KeyboardSpam module;
+    public Spam module;
 
     int presses = 0;
 
