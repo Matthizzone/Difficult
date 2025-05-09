@@ -131,7 +131,14 @@ public class TextEntryBehavior : MonoBehaviour
         }
         else if (digit_to_add == ">")
         {
-            transform.parent.parent.GetComponent<AngleMeasure>().SubmitAngle(text);
+            if (transform.parent.parent.GetComponent<AngleMeasure>() != null)
+            {
+                transform.parent.parent.GetComponent<AngleMeasure>().SubmitAngle(text);
+            }
+            else if (transform.parent.parent.GetComponent<SquareCount>() != null)
+            {
+                transform.parent.parent.GetComponent<SquareCount>().SubmitAnswer(text);
+            }
             input_ready = false;
 
             AudioManager.instance.PlaySound("Keyboard/KeyEnter", true);
