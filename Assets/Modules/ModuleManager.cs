@@ -33,7 +33,7 @@ public class ModuleManager : MonoBehaviour
 
         MattMath.FisherYatesShuffle(order);
 
-        order[0] = 7; // ORDER CONTROL
+        order[0] = 8; // ORDER CONTROL
 
         GoToModule(order[num_completed]);
     }
