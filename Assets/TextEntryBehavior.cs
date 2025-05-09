@@ -13,7 +13,6 @@ public class TextEntryBehavior : MonoBehaviour
     public bool accepts_numbers;
 
     string text = "";
-    string solution = "NOESCAPE";
 
     public int max_length;
 
