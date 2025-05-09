@@ -14,8 +14,6 @@ public class DiceBehavior : MonoBehaviour
     Vector3 mPrevPos;
     Vector3 mPosDelta;
 
-    bool prev_mousing_over;
-
     void Update()
     {
         MouseOverSpin();
@@ -32,15 +30,11 @@ public class DiceBehavior : MonoBehaviour
             mPosDelta = Input.mousePosition - mPrevPos;
 
             if (Input.GetMouseButtonDown(0)) Select();
-
-            prev_mousing_over = true;
         }
         else
         {
             Vector3 default_spin = selected ? new Vector3(4, 0, 0) : Vector3.zero;
             mPosDelta = MattMath.FRIndepLerp(mPosDelta, default_spin, DISSIPATION);
-
-            prev_mousing_over = false;
         }
 
         Vector3 rot_vec = new Vector3(mPosDelta.y, 0, -mPosDelta.x);

@@ -11,6 +11,8 @@ public class ReactionTime : MonoBehaviour
     public TMPro.TMP_Text text;
     public Image Banner;
 
+    public float max = 0.220f;
+
     void Update()
     {
         HandleClick();
@@ -58,7 +60,7 @@ public class ReactionTime : MonoBehaviour
 
                 transform.Find("Canvas").Find("Checks").GetComponent<Checks>().AddX();
             }
-            else if (click_time > 0.25f)
+            else if (click_time > max)
             {
 
                 text.text = "Too slow!\r\n" + click_time_str;
